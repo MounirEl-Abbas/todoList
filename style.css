@@ -1,0 +1,363 @@
+/*
+===============
+Fonts
+===============
+*/
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans|Open+Sans|Roboto:400,700&display=swap");
+
+/*
+===============
+Variables
+===============
+*/
+:root {
+  /* Primary colors */
+  --brightBlue: hsl(220, 98%, 61%);
+  /* Light Theme */
+
+  --ff-primary: "Josefin Sans", sans-serif;
+  --ff-secondary: "Open Sans", sans-serif;
+  --transition: all 0.3s linear;
+}
+
+/*==============================================================
+Light Theme
+===============================================================*/
+.light-theme {
+  --clr-dark2: hsl(0, 0%, 98%);
+  --clr-dark1: hsl(236, 33%, 92%);
+  --clr-dark5: hsl(233, 11%, 84%);
+  --clr-dark3: hsl(236, 9%, 61%);
+  --clr-dark4: hsl(236, 9%, 61%);
+  --clr-dark5: hsl(236, 9%, 61%);
+  --clr-dark6: hsl(235, 19%, 35%);
+  --clr-borderHover: rgb(120, 131, 228);
+}
+.light-theme header {
+  width: 100%;
+  background: url(misc/images/bg-mobile-light.jpg) no-repeat center;
+  background-size: cover;
+  height: 25%;
+}
+/*==============================================================
+Dark Theme
+===============================================================*/
+.dark-theme {
+  --clr-dark1: hsl(235, 21%, 11%);
+  --clr-dark2: hsl(235, 24%, 19%);
+  --clr-dark3: hsl(237, 14%, 26%);
+  --clr-dark4: hsl(233, 14%, 35%);
+  --clr-dark5: hsl(234, 11%, 52%);
+  --clr-dark6: hsl(234, 39%, 85%);
+  --clr-dark62: hsl(236, 33%, 92%);
+  --clr-borderHover: #922ea7;
+}
+.dark-theme header {
+  background: url(misc/images/bg-mobile-dark.jpg) no-repeat center;
+  background-size: cover;
+  height: 25%;
+}
+/*====================
+General Layout
+====================*/
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: var(--clr-dark1);
+}
+body {
+  /* display: flex;
+  flex-flow: column nowrap;
+  position: relative;
+  color: white;
+  font-family: var(--ff-primary); */
+}
+header {
+  background-size: cover;
+  height: 25%;
+}
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  position: relative;
+  color: white;
+  font-family: var(--ff-primary);
+}
+.content-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  max-width: 668px;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+/*====================
+Title 
+====================*/
+.title {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 25px 30px 25px;
+  width: 90%;
+  margin: auto;
+}
+.title > h1 {
+  font-size: 28px;
+  letter-spacing: 8px;
+}
+.title > img {
+  height: 20px;
+  cursor: pointer;
+}
+/*====================
+Tasks - Layout
+====================*/
+.tasks-container {
+  margin: auto;
+  width: 86%;
+  height: fit-content;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  color: var(--clr-dark6);
+}
+/* Create New Task input field */
+.tasks-container > input {
+  width: 100%;
+  background-color: var(--clr-dark2);
+  font-size: 13px;
+  padding: 16px;
+  margin: 15px 0;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  color: var(--clr-dark6);
+}
+.tasks-container > input::placeholder {
+  color: var(--clr-dark5);
+  font-family: var(--ff-primary);
+}
+
+/* ALL TASKS */
+.tasks {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+}
+/* Each individual Task  (Dynamically added)*/
+.task {
+  /* outline: 4px solid blue; */
+  display: flex;
+  flex-flow: row nowrap;
+  background-color: var(--clr-dark2);
+  font-size: 13px;
+  padding: 14px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--clr-dark3);
+  cursor: pointer;
+}
+.task:first-child {
+  border-radius: 5px 5px 0 0;
+}
+/*====================
+Each Task - components
+====================*/
+
+/* Check Box */
+.task > button {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--clr-dark3);
+  background-color: transparent;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.task > button:hover {
+  border: 3px solid var(--clr-borderHover);
+}
+/* Hide check icon */
+.task > button > img {
+  display: none;
+}
+/* Task text content */
+.task > p {
+  width: calc(100% - 40px);
+  margin-left: 10px;
+}
+/* Task delete (X) button */
+.button-container {
+  justify-self: flex-end;
+}
+
+.button-container > img {
+  height: 14px;
+}
+
+/*====================
+Task Checked
+====================*/
+/* Check box */
+.checked > button {
+  background: url(misc/images/icon-check.svg),
+    linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%)) no-repeat center;
+  background-size: contain;
+}
+.checked > button > img {
+  display: inline-block;
+}
+/*Content */
+.checked > p {
+  text-decoration: line-through;
+  color: var(--clr-dark5);
+}
+
+/*====================
+Tasks information
+====================*/
+.tasks-information {
+  display: flex;
+  background-color: var(--clr-dark2);
+  font-size: 13px;
+  padding: 16px 20px;
+  width: 100%;
+  border-radius: 0 0 5px 5px;
+  justify-content: space-between;
+  align-items: center;
+}
+/* Items Left */
+.tasks-information > p {
+  color: var(--clr-dark4);
+}
+/* Clear Completed */
+.tasks-information > button {
+  background-color: transparent;
+  border: none;
+  color: var(--clr-dark4);
+  font-family: var(--ff-primary);
+  cursor: pointer;
+}
+.tasks-information > button:hover {
+  color: var(--clr-dark6);
+}
+/*====================
+Filter Buttons
+====================*/
+.task-filters {
+  display: flex;
+  background-color: var(--clr-dark2);
+  font-size: 13px;
+  padding: 16px 20px;
+  width: 100%;
+  border-radius: 5px;
+  margin: 15px 0;
+  justify-content: center;
+  align-items: center;
+}
+.task-filters > button {
+  background-color: transparent;
+  color: var(--clr-dark4);
+  border: none;
+  font-family: var(--ff-primary);
+  font-weight: 700;
+  cursor: pointer;
+}
+.task-filters > button:nth-child(2) {
+  margin: 0 15px;
+}
+.task-filters > button:hover {
+  color: var(--clr-dark6);
+}
+
+/* Drag and Drop text */
+.tasks-container > p {
+  color: var(--clr-dark3);
+  margin-top: 30px;
+  font-size: 14px;
+}
+.tasks-container > p:first-of-type {
+  font-size: 16px;
+  color: var(--clr-dark5);
+}
+
+/*====================
+Desktop View
+====================*/
+.desktop-nav-bar {
+  width: 100%;
+}
+
+@media (min-width: 992px) {
+  /* General Layout */
+  .dark-theme header {
+    background: url(misc/images/bg-desktop-dark.jpg) no-repeat center;
+    background-size: cover;
+  }
+  .light-theme header {
+    background: url(misc/images/bg-desktop-light.jpg) no-repeat center;
+    background-size: cover;
+  }
+  .content-container {
+    margin-top: 40px;
+  }
+  /* Create New Task input field */
+  .tasks-container > input {
+    padding: 20px;
+    font-size: 16px;
+  }
+  /* Each individual Task */
+  .task {
+    padding: 20px;
+    font-size: 15px;
+  }
+  /* Each Task - components */
+  /* Check Box */
+  .task > button {
+    width: 26px;
+    height: 26px;
+    border-radius: 13px;
+  }
+  /* Task text content */
+  .task > p {
+    font-size: 16px;
+    margin-left: 16px;
+  }
+  /* Task delete (X) Button */
+  .task > .button-container > img {
+    height: 20px;
+    visibility: hidden;
+  }
+  /* Bottom Filter bar */
+  .desktop-nav-bar {
+    position: relative;
+  }
+  .tasks-information {
+    font-size: 16px;
+    padding: 22px;
+  }
+  .tasks-information > button {
+    font-size: 16px;
+  }
+  .task-filters {
+    width: 40%;
+    position: absolute;
+    top: 8px;
+    left: 0;
+    right: 20px;
+    margin: auto;
+  }
+  .task-filters > button {
+    font-size: 16px;
+  }
+}
